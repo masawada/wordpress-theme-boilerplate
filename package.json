@@ -1,0 +1,22 @@
+{
+  "name": "wordpress-theme-boilerplate",
+  "version": "1.0.0",
+  "repository": "https://github.com/masawada/wordpress-theme-boilerplate.git",
+  "author": "Masayoshi Wada",
+  "license": "MIT",
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "less": "^2.7.2",
+    "less-plugin-clean-css": "^1.5.1",
+    "npm-run-all": "^4.0.2",
+    "watch": "^1.0.2"
+  },
+  "scripts": {
+    "build": "npm-run-all --parallel build:*",
+    "watch": "npm-run-all --parallel watch:*",
+    "build:php": "cpx 'src/templates/*.php' .dist/main --verbose",
+    "watch:php": "cpx 'src/templates/*.php' .dist/main --verbose --watch",
+    "build:css": "lessc src/styles/style.less .dist/main/style.css --clean-css --source-map=.dist/main/style.css.map --source-map-basepath=.dist/main",
+    "watch:css": "watch 'npm run build:css' 'src/styles' --ignoreDotFiles"
+  }
+}
